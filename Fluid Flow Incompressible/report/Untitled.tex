@@ -1,0 +1,48 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\usepackage{fullpage} % changes the margin
+\usepackage{outline}
+\usepackage{pmgraph}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{esvect}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\usepackage{longtable}
+\usepackage{physics}
+\usepackage{gensymb}
+%\usepackage[document]{ragged2e}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[nottoc]{tocbibind}
+\usepackage[normalem]{ulem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{geometry}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Assignment Report} \hfill \textbf{Ramy Tanios} \\
+\normalsize MECH764 \hfill 201404444 \\
+Prof. Fadl Moukalled \hfill \\ \hfill Due Date: 20/5/2018
+
+%----------------
+\section*{Problem Statement}
+In this homework, we are required to solve the continuity and momentum equations for the thermal and hydrodynamic fields using the \textbf{SIMPLE} algorithm.
+%----------------
+\section*{Numerical Implementation}
+For the diffusion and convection terms in the momentum equations, the codes developed in the previous homework will be used, but modified so they are compatible with the current problem. Starting with ana initial guess for the pressure field $p$ and the velocity fields $u$ and $v$, the two subroutines \textit{solveNavierStokesf0rVelocityInXdiretion.f90} and \textit{solveNavierStokesf0rVelocityInYdiretion.f90} solve the two sets of momentum equations in $x$ and $y$ directions in ordet to get momentum statisfying velocity fields. After finding the velocity fields, the mass flow rates on the each cell faces are computed using the Rhie-Chow interpolation. The subroutine \textit{rhieCh0wInterpolation.f90} does this task and then, the subroutine \textit{solvePressureCorrectionEquation.f90} solves the pressure correction equation in order to get the pressure correction field and hence continuity satsifying velocity fields. The following algorithm is repeated in a do while loop until the maximum value of pressure correction matrix drops below some indicated tolerance, and the velocity field satisfies both the continuity and momentum equations. 
+Finally, the subroutine \textit{solvef0rPhi.f90} solves the energy equation for the temperature field. 
+%----------------
+
+\end{document}
+
